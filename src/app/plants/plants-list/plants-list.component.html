@@ -1,5 +1,5 @@
 <table class="table">
-  <thead class="thead-dark">
+  <thead class="table-dark">
     <tr>
       <th scope="col">#</th>
       <th scope="col">Nombre común</th>
@@ -7,7 +7,7 @@
       <th scope="col">Clima</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody id="data">
     <tr *ngFor="let plant of plants">
       <th scope="row">{{plant.id}}</th>
       <td>{{plant.nombre_comun}}</td>
@@ -16,5 +16,6 @@
     </tr>
   </tbody>
 </table>
-<h5 class="display-5">Total plantas de interior {{interior}}</h5>
-<h5 class="display-5">Total plantas de exterior {{exterior}}</h5>
+<div>
+  <div class="resumen" *ngFor="let tipo of tipos | keyvalue">Total plantas de {{tipo.key}} :  {{tipo.value}}</div>
+</div>

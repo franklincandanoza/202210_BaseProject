@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Plant } from '../plant';
-import { PlantService } from '../Plant.service';
+import { PlantService } from '../plant.service';
 
 @Component({
   selector: 'app-plants-list',
@@ -10,22 +10,23 @@ import { PlantService } from '../Plant.service';
 export class PlantsListComponent implements OnInit {
 
   plants: Array<Plant> = []
-  interior: number = 0
-  exterior: number = 0
+  tipos = new Map<String, number>();
 
   constructor(private plantService: PlantService) { }
 
   getPlants(): void {
     this.plantService.getPlants().subscribe((plants)=> {
       this.plants = plants;
-      this.interior = this.getTotalByType("Interior")
-      this.exterior = this.getTotalByType("Exterior")
+      this.loadTotalByType()
 
     });
   }
 
-  private getTotalByType(tipo: String): number {
-    return this.plants.filter(a => a.tipo == tipo).length
+  loadTotalByType(): void{
+
+    this.plants.forEach(a => {
+      this.tipos.set(a.tipo, (this.tipos.get(a.tipo)?? 0) +1 )
+    });
   }
 
   ngOnInit() {

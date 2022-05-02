@@ -1,3 +1,22 @@
 * [lang^=en] {
   color: green;
 }
+
+footer {
+
+  position: absolute;
+  width: 645px;
+  height: 23px;
+  left: 407px;
+  top: 989px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+
+  color: #000000;
+}
+
+
